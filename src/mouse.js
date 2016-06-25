@@ -12,6 +12,5 @@ function getMousePosition(e, canvas) {
         ret = Vector.create(
             e.pageX - canvas.offsetLeft, 
             e.pageY - canvas.offsetTop);
-    // adjust position due to crosshair issues
-    return ret.add(Vector.create(10, 10));
+    return ret;
 }
