@@ -1,4 +1,4 @@
-# canvas-screens
+# Canvas Screens
 Provides a system for managing movement between screens in a relatively simple manner.
 
 ## What is a screen?

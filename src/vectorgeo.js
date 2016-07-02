@@ -9,22 +9,12 @@
 // This makes reasoning about the code much-much easier
 // Whereas Victor.js was ALL side-effects
 
-var Vector;
-var PolarVector;
-var WrapVector;
-var WrapPolarVector;
-
 // Supports getting and setting in both a polar and xy style
-// More efficient for xy style
-Vector = Object.create(null);
-Vector.create = function(x, y) {
-    var created = Object.create(Vector);
-    created.data =  new Float64Array(2);
-    created.data[0] = x;
-    created.data[1] = y;
-    return created;
-};
-Vector.data = new Float64Array(2);
+Vector.init = function(created, x, y) {
+    this.data = new Float64Array(2);
+    this.x = x;
+    this.y = y;
+}
 // Methods that must be defined in a subclass
 Vector.x = function() {
     return this.data[0];
@@ -102,12 +92,10 @@ Vector.wrap = function(wrapped) {
 // For compiler efficiency reasons, doing it this way is better.
 PolarVector = Object.create(Vector);
 // More efficient for radius-angle vectors
-PolarVector.create = function(angle, radius) {
-    var created = Object.create(this);
-    created.data = new Float64Array(2);
-    created.data[0] = angle;
-    created.data[1] = radius;
-    return created;
+PolarVector.init = function(created, angle, radius) {
+    this.data = new Float64Array(2);
+    this.data[0] = angle;
+    this.data[1] = radius;
 };
 PolarVector.angle = function() {
     return this.data[0];
@@ -136,13 +124,8 @@ PolarVector.toString = function() {
     return "PolarVector<angle: = " + this.angle() + ", radius = " + this.radius() + ">";
 };
 
-// Not really recommended since stupid things can potentially happen here
-WrapVector = Object.create(Vector);
-
-WrapVector.create = function(wrapped) {
-    var created = Object.create(this);
+WrapVector.init = function(wrapped) {
     this.wrapped = wrapped;
-    return created;
 };
 
 WrapVector.x = function() {
@@ -153,11 +136,8 @@ WrapVector.y = function() {
     return this.wrapped.y;
 };
 
-WrapPolarVector = Object.create(PolarVector);
-WrapPolarVector.create = function(wrapped) {
-    var created = Object.create(this);
-    created.wrapped = wrapped;
-    return created;
+WrapPolarVector.init = function(wrapped) {
+    this.wrapped = wrapped;
 };
 WrapPolarVector.radius = function() {
     return this.wrapped.radius;
@@ -165,75 +145,4 @@ WrapPolarVector.radius = function() {
 WrapPolarVector.angle = function() {
     return this.wrapped.angle;
 };
-
-function test_vectors() {
-    function test_identity(v, i, n) {
-        var e = 1e-10;
-        if(!v.equals(i))
-            alert(n + ".equals fails");
-        if(Math.abs(v.x() - i.x()) > e || Math.abs(v.y() - i.y()) > e)
-            alert(n + ".x or .y fails: " + v.x() + ", " + v.y());
-        if(v.radius() != i.radius())
-            alert(n + ".radius fails: " + v.radius());
-        if(v.radiusSq() != i.radiusSq())
-            alert(n + ".radiusSq fails: " + v.radiusSq());
-        if(v.angle() != i.angle())
-            alert(n + ".angle fails: " + v.angle());
-        if(!v.addX(1).equals(i.addX(1)))
-            alert(n + ".addX fails: " + v.addX(1));
-        if(!v.addY(1).equals(i.addY(1)))
-            alert(n + ".addY fails: " + v.addY(1));
-        if(!v.add(Vector.create(1, 1)).equals(i.add(Vector.create(1, 1))))
-            alert(n + ".add fails: " + v.add(Vector.create(1, 1)));
-        if(!v.subtract(Vector.create(1, 1)).equals(Vector.create(2, 3)))
-            alert(n + ".subtract fails: " + v.subtract(Vector.create(1, 1)));
-        if(!v.multiply(Vector.create(2, 3)).equals(Vector.create(6, 12)))
-            alert(n + ".multiply fails: " + v.multiply(Vector.create(2, 3)));
-        if(!v.divide(Vector.create(3, 4)).equals(Vector.create(1, 1)))
-            alert(n + ".divide fails: " + v.divide(Vector.create(3, 4)));
-        if(!v.scalarMultiply(2).equals(Vector.create(6, 8)))
-            alert(n + ".scalarMultiply fails: " + v.scalarMultiply(2));
-        if(!v.scalarDivide(2).equals(Vector.create(1.5, 2)))
-            alert(n + ".scalarDivide fails: " + v.scalarDivide(2));
-        if(!v.invert().equals(Vector.create(-3, -4)))
-            alert(n + ".invert fails: " + v.invert());
-        if(!v.rotate(Math.PI / 2).equals(Vector.create(-4, 3)))
-            alert(n + ".rotate fails: " + v.rotate(Math.PI / 2).x() + ", " + v.rotate(Math.PI / 2).y());
-        if(!v.normalize().equals(Vector.create(0.6, 0.8)))
-            alert(n + ".normalize fails: " + v.normalize().x() + ", " + v.normalize().y());
-        if(v.dot(Vector.create(2, 3)) != 18)
-            alert(n + ".dot fails: " + v.dot(Vector.create(2, 3)));
-        if(v.distance(Vector.create(0, 0)) != 5)
-            alert(n + ".distance fails: " + v.distance(Vector.create(0, 0)));
-    }
-    var i = Object.create(null);
-    i.x = function() { return 3; };
-    i.y = function() { return 4; };
-    i.angle = function() { return Math.atan2(4, 3); };
-    i.radius = function() { return 5; };
-    i.radiusSq = function() { return 25; };
-    i.addX = function(v) { return Vector.create(3 + v, this.y()); };
-    i.addY = function(v) { return Vector.create(3, 4 + v); };
-    i.add = function(v) { return Vector.create(3 + v.x(), 4 + v.y()); };
-    i.multiply = function(v) { return Vector.create(3 * v.x(), 4 * v.y()); };
-    i.divide = function(v) { return Vector.create(3 / v.x(), 4 / v.y()); };
-    i.scalarMultiply = function(v) { return Vector.create(3 * v, 4 * v); };
-    i.scalarDivide = function(v) { return Vector.create(3 / v, 4 / v); };
-    i.invert = function(v) { return Vector.create(-3, -4); };
-    i.rotate = function(v) { return Vector.create(3 * Math.cos(v) - 4 * Math.sin(v), Math.cos(v) * 4 + 3 * Math.sin(v)); };
-    i.normalize = function(v) { return Vector.create(3 / 5, 4 / 5); };
-    i.dot = function(v) { return 3 * v.x() + 4 * v.y(); };
-    i.distance = function(v) { return Math.sqrt((3 - v.x()) * (3 - v.x()) + (4 - v.y()) * (4 - v.y())); };
-
-    try {
-        test_identity(Vector.create(3, 4), i, "Vector");
-        test_identity(PolarVector.create(Math.atan2(4, 3), 5), i, "PolarVector");
-        test_identity(Vector.wrap({"x": 3, "y": 4}), i, "WrapVector");
-        test_identity(Vector.wrap({"angle": Math.atan2(4, 3), "radius": 5}), i, "WrapPolarVector");
-    } catch(e) {
-        alert("Error while testing: " + e);
-    }
-}
-
-test_vectors();
 

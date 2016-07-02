@@ -22,8 +22,8 @@
  * -> performs cleanup and final actions for the screen
  **/
 
-function Screen(ctx) {
-    this.ctx = (ctx === undefined)? 0 : ctx;
+Screen.init = function(ctx) {
+    this.ctx = ctx;
     this.frameRequest = null;
     this.lastTime = 0;
     this.elapsedTime = 0;
@@ -31,13 +31,11 @@ function Screen(ctx) {
     this.handlers = [];
 }
 
-Screen.prototype = new Object();
-
-Screen.prototype.addHandler = function(object, event_name, handler) {
+Screen.addHandler = function(object, event_name, handler) {
     this.handlers.push(new Handler(object, event_name, handler));
 }
 
-Screen.prototype.draw = function(currentTime) {
+Screen.draw = function(currentTime) {
     if(this.lastTime == 0)
         this.dt = 0;
     else
@@ -49,18 +47,18 @@ Screen.prototype.draw = function(currentTime) {
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
 }
 
-Screen.prototype.open = function() {
+Screen.open = function() {
     this.elapsedTime = 0;
     this.unpause();
 }
 
-Screen.prototype.close = function() {
+Screen.close = function() {
     this.pause();
     // unpausing after closing should be undefined but will work
     // sometimes
 }
 
-Screen.prototype.pause = function() {
+Screen.pause = function() {
     // cancelAnimationFrame is experimental
     // TODO: add a workaround for non-compatible browsers
     window.cancelAnimationFrame(this.frameRequest);
@@ -68,23 +66,10 @@ Screen.prototype.pause = function() {
         this.handlers[i].disable(this.ctx.canvas);
 }
 
-Screen.prototype.unpause = function() {
+Screen.unpause = function() {
     this.lastTime = 0;
     this.frameRequest = window.requestAnimationFrame(this.draw.bind(this));
     for(var i = 0; i < this.handlers.length; i++)
         this.handlers[i].enable(this.ctx.canvas);
 }
 
-function Handler(object, name, event) {
-    this.object = object;
-    this.name = name;
-    this.event = event;
-}
-
-Handler.prototype.enable = function() {
-    this.object.addEventListener(this.name, this.event, false);
-}
-
-Handler.prototype.disable = function(canvas) {
-    this.object.removeEventListener(this.name, this.event);
-}

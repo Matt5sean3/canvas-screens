@@ -1,0 +1,35 @@
+{
+  "name": "canvas-screens",
+  "version": "0.0.1",
+  "description": "A library for managing rendering, events, and media for seperate game screens or states.",
+  "keywords": [
+    "HTML5",
+    "canvas",
+    "game"
+  ],
+  "bugs": {
+    "url": "https://github.com/Matt5sean3/canvas-screens/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Matthew Balch",
+    "email": "matbalch@vt.edu"
+  },
+  "files": [],
+  "dependencies": {},
+  "devDependencies": {
+    "broccoli": "^0.16.9",
+    "broccoli-es6-module-transpiler": "^0.5.0",
+    "broccoli-funnel": "^1.0.0",
+    "broccoli-merge-trees": "^1.0.0",
+    "mocha": "^2.5.3"
+  },
+  "scripts": {
+    "prepublish": "broccoli build build"
+  },
+  "main": "build/canvas-screens.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Matt5sean3/canvas-screens.git"
+  }
+}

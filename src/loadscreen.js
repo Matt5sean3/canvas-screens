@@ -1,16 +1,14 @@
 "use strict";
 
-function LoadScreen(ctx, images, media, nextScreen) {
+LoadScreen.init = function(ctx, images, media, nextScreen) {
     Screen.call(this, ctx);
     this.images = images;
     this.media = media;
     this.next = nextScreen;
 }
 
-LoadScreen.prototype = new Screen();
-
-LoadScreen.prototype.draw = function(currentTime) {
-    Screen.prototype.draw.call(this, currentTime);
+LoadScreen.draw = function(currentTime) {
+    Screen.draw.call(this, currentTime);
     var numerator = 0;
     var denominator = this.images.length + this.media.length;
     for(var i = 0; i < this.images.length; i++)
@@ -27,7 +25,7 @@ LoadScreen.prototype.draw = function(currentTime) {
     }
 }
 
-LoadScreen.prototype.render = function(ctx, fraction, currentTime, dt) {
+LoadScreen.render = function(ctx, fraction, currentTime, dt) {
     // placeholder
     ctx.save();
     ctx.font = "20px Arial";
@@ -35,3 +33,4 @@ LoadScreen.prototype.render = function(ctx, fraction, currentTime, dt) {
     ctx.fillText("%" + Math.floor(100 * fraction), 40, 40);
     ctx.restore();
 }
+
