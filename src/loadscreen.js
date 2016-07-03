@@ -1,4 +1,7 @@
-"use strict";
+
+import {Screen} from "screen";
+
+export const LoadScreen = Object.create(Screen);
 
 LoadScreen.init = function(ctx, images, media, nextScreen) {
     Screen.call(this, ctx);

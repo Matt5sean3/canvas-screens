@@ -1,4 +1,8 @@
 
+import {Base} from "base";
+
+export const Slider = Object.create(Base);
+
 Slider.init = function(loc, width, height, slider_width) {
     this.loc = loc;
     this.width = width;
@@ -60,6 +64,4 @@ Slider.setSliderPosition = function(xpos) {
     // clamp between 0 and 1
     this.setValue(Math.min(1.0, Math.max(0.0, floatpos)));
 }
-
-module.exports.Slider = Slider;
 

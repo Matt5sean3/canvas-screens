@@ -1,31 +1,41 @@
 // Declares the classes and export
+import {Vector} from "vectorgeo";
+import {PolarVector} from "vectorgeo";
+import {WrapVector} from "vectorgeo";
+import {WrapPolarVector} from "vectorgeo";
+import {BoundingShape} from "boundingshape";
+import {BoundingBox} from "boundingbox";
+import {BoundingCircle} from "boundingcircle";
+import {CollisionEvent} from "collisionevent";
+import {CollisionGroup} from "collisiongroup";
+import {Entity} from "entity";
+import {Screen} from "screen";
+import {SplashScreen} from "splashscreen";
+import {TimedSplashScreen} from "timedsplashscreen";
+import {MenuScreen} from "menuscreen";
+import {LoadScreen} from "loadscreen";
+import {Button} from "button";
+import {TextButton} from "textbutton";
+import {Slider} from "slider";
 
-// Also presents the object hierarchy fairly nicely
-const Base = Object.create(null);
-
-export const Vector = Object.create(Base);
-export const PolarVector = Object.create(Vector);
-export const WrapVector = Object.create(Vector);
-export const WrapPolarVector = Object.create(PolarVector);
-
-export const BoundingShape = Object.create(Base);
-export const BoundingBox = Object.create(BoundingShape);
-export const BoundingCircle = Object.create(BoundingShape);
-
-export const CollisionEvent = Object.create(Base);
-
-export const CollisionGroup = Object.create(Base);
-
-export const Entity = Object.create(Base);
-
-export const Screen = Object.create(Base);
-export const SplashScreen = Object.create(Screen);
-export const TimedSplashScreen = Object.create(TimedSplashScreen);
-export const MenuScreen = Object.create(Screen);
-export const LoadScreen = Object.create(Screen);
-
-export const Button = Object.create(Base);
-export const TextButton = Object.create(Button);
-
-export const Slider = Object.create(Base);
+export default {
+  "Vector": Vector,
+  "PolarVector": PolarVector,
+  "WrapVector": WrapVector,
+  "WrapPolarVector": WrapPolarVector,
+  "BoundingShape": BoundingShape,
+  "BoundingBox": BoundingBox,
+  "BoundingCircle": BoundingCircle,
+  "CollisionEvent": CollisionEvent,
+  "CollisionGroup": CollisionGroup,
+  "Entity": Entity,
+  "Screen": Screen,
+  "SplashScreen": SplashScreen,
+  "TimedSplashScreen": TimedSplashScreen,
+  "MenuScreen": MenuScreen,
+  "LoadScreen": LoadScreen,
+  "Button": Button,
+  "TextButton": TextButton,
+  "Slider": Slider
+};
 

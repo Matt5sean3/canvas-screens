@@ -1,4 +1,5 @@
-"use strict";
+import {Base} from "base";
+export const Entity = Object.create(Base);
 
 Entity.init = function(pos, vel, bbox) {
     this.pos = (pos === undefined) ? Vector.create(0, 0) : pos;

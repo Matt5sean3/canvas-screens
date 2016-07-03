@@ -1,3 +1,8 @@
+
+import {Base} from "base";
+
+export const Button = Object.create(Base);
+
 Button.init = function(loc, bbox, event) {
     this.loc = loc;
     this.bbox = bbox;

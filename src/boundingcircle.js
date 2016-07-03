@@ -1,4 +1,8 @@
 
+import {BoundingShape} from 'boundingshape';
+
+export const BoundingCircle = Object.create(BoundingShape);
+
 BoundingCircle.init = function(r) {
     this.radius = r;
 }

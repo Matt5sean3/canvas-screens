@@ -1,4 +1,4 @@
-"use strict";
+import {Base} from "base";
 
 /**
  * The life cycle of a screen
@@ -21,6 +21,8 @@
  * -> pauses the screen internally
  * -> performs cleanup and final actions for the screen
  **/
+
+export const Screen = Object.create(Base);
 
 Screen.init = function(ctx) {
     this.ctx = ctx;

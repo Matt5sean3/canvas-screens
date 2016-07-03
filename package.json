@@ -22,12 +22,14 @@
     "broccoli-es6-module-transpiler": "^0.5.0",
     "broccoli-funnel": "^1.0.0",
     "broccoli-merge-trees": "^1.0.0",
+    "chai": "^3.5.0",
     "mocha": "^2.5.3"
   },
   "scripts": {
-    "prepublish": "broccoli build build"
+    "prepublish": "broccoli build build",
+    "test": "mocha"
   },
-  "main": "build/canvas-screens.js",
+  "main": "build/commonjs/exports.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Matt5sean3/canvas-screens.git"

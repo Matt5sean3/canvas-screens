@@ -1,4 +1,8 @@
 
+import {Button} from "button";
+
+export const TextButton = Object.create(Button);
+
 TextButton.init = function(loc, text, font, style, event) {
     // Calculate the bounding box
     Button.init.call(this, loc, new BoundingBox(0, 0), event);

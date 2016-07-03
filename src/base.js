@@ -1,3 +1,4 @@
+export const Base = Object.create(null);
 
 Base.create = function() {
     var created = Object.create(this);

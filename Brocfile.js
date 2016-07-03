@@ -1,12 +1,24 @@
 var Funnel = require('broccoli-funnel');
 var MergeTrees = require('broccoli-merge-trees');
-var CompiledModules = require('broccoli-es6-module-transpiler');
+var CompileModules = require('broccoli-es6-module-transpiler');
 
 var lib = 'src';
 
-var transpiledLib = CompiledModules(lib, {
+var web = CompileModules(lib, {
   formatter: 'bundle',
   output: 'canvas-screens.js'
 });
 
-module.exports = new Funnel(transpiledLib); 
+var webfunnel = Funnel(web, {
+  destDir: 'web'
+});
+
+var commonjs = CompileModules(lib, {
+  formatter: 'commonjs'
+});
+
+var commonjsfunnel = Funnel(commonjs, {
+  destDir: 'commonjs'
+});
+
+module.exports = MergeTrees([commonjsfunnel, webfunnel]); 

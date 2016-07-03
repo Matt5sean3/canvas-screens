@@ -10,6 +10,13 @@
 // Whereas Victor.js was ALL side-effects
 
 // Supports getting and setting in both a polar and xy style
+import {Base} from 'base';
+
+export const Vector = Object.create(Base);
+export const PolarVector = Object.create(Vector);
+export const WrapVector = Object.create(Vector);
+export const WrapPolarVector = Object.create(PolarVector);
+
 Vector.init = function(created, x, y) {
     this.data = new Float64Array(2);
     this.x = x;
