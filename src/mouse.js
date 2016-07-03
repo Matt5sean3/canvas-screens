@@ -1,4 +1,3 @@
-"use strict";
 
 function getMousePosition(e, canvas) {
     var ret;
@@ -14,3 +13,4 @@ function getMousePosition(e, canvas) {
             e.pageY - canvas.offsetTop);
     return ret;
 }
+

@@ -1,8 +1,3 @@
-
-import {BoundingShape} from 'boundingshape';
-
-export const BoundingCircle = Object.create(BoundingShape);
-
 BoundingCircle.init = function(r) {
     this.radius = r;
 }
@@ -26,3 +21,4 @@ BoundingCircle.draw = function(ctx) {
     ctx.stroke();
     ctx.restore();
 }
+

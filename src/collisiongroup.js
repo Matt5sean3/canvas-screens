@@ -1,7 +1,3 @@
-import {Base} from 'base';
-
-export const CollisionGroup = Object.create(Base);
-
 CollisionGroup.init = function() {
     this.collisionEvents = [];
 }

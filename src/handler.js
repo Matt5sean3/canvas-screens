@@ -1,5 +1,4 @@
-
-var Handler = function(object, name, event) {
+Handler.create = function(object, name, event) {
     var created = Object.create(Handler);
     created.object = object;
     created.name = name;

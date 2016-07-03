@@ -1,8 +1,3 @@
-
-import {Screen} from "screen";
-
-export const MenuScreen = Object.create(Screen);
-// === START MENU SCREEN
 MenuScreen.init = function(ctx) {
     Screen.init.call(this, ctx);
     this.options = [];

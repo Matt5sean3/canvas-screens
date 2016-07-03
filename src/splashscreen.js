@@ -1,7 +1,3 @@
-import {Screen} from "screen";
-
-export const SplashScreen = Object.create(Screen);
-
 // Clicking through is a fundamental splash screen option
 // Some splash screens are timed though
 

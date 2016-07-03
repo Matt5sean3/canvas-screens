@@ -1,5 +1,5 @@
 const assert = require("chai").assert;
-const CS = require("canvas-screens");
+const CS = require("../build/commonjs/canvas-screens");
 const Vector = CS.Vector;
 const PolarVector = CS.PolarVector;
 const WrapVector = CS.WrapVector;
@@ -60,10 +60,10 @@ function vector_description(name, v, i) {
             assert.isOk(v.normalize().equals(Vector.create(0.6, 0.8)));
         });
         it("Should dot product", function() {
-            assert.isClose(v.dot(Vector.create(2, 3)), 18, e);
+            assert.closeTo(v.dot(Vector.create(2, 3)), 18, e);
         });
         it("Should measure distance", function() {
-            assert.isClose(v.distance(Vector.create(0, 0)), 5, e);
+            assert.closeTo(v.distance(Vector.create(0, 0)), 5, e);
         });
     });
 }
@@ -87,8 +87,8 @@ i.normalize = function(v) { return Vector.create(3 / 5, 4 / 5); };
 i.dot = function(v) { return 3 * v.x() + 4 * v.y(); };
 i.distance = function(v) { return Math.sqrt((3 - v.x()) * (3 - v.x()) + (4 - v.y()) * (4 - v.y())); };
 
-vector_description(Vector.create(3, 4), i, "Vector");
-vector_description(PolarVector.create(Math.atan2(4, 3), 5), i, "PolarVector");
-vector_description(Vector.wrap({"x": 3, "y": 4}), i, "WrapVector");
-vector_description(Vector.wrap({"angle": Math.atan2(4, 3), "radius": 5}), i, "WrapPolarVector");
+vector_description("Vector", Vector.create(3, 4), i);
+vector_description("PolarVector", PolarVector.create(Math.atan2(4, 3), 5), i);
+vector_description("WrapVector", Vector.wrap({"x": 3, "y": 4}), i);
+vector_description("WrapPolarVector", Vector.wrap({"angle": Math.atan2(4, 3), "radius": 5}), i);
 

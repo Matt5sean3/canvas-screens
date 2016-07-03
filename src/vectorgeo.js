@@ -1,4 +1,3 @@
-"use strict";
 // Does vector mathematics
 
 // These are meant to be essentially immutable objects
@@ -10,17 +9,10 @@
 // Whereas Victor.js was ALL side-effects
 
 // Supports getting and setting in both a polar and xy style
-import {Base} from 'base';
-
-export const Vector = Object.create(Base);
-export const PolarVector = Object.create(Vector);
-export const WrapVector = Object.create(Vector);
-export const WrapPolarVector = Object.create(PolarVector);
-
-Vector.init = function(created, x, y) {
+Vector.init = function(x, y) {
     this.data = new Float64Array(2);
-    this.x = x;
-    this.y = y;
+    this.data[0] = x;
+    this.data[1] = y;
 }
 // Methods that must be defined in a subclass
 Vector.x = function() {
@@ -96,10 +88,8 @@ Vector.wrap = function(wrapped) {
     }
 };
 
-// For compiler efficiency reasons, doing it this way is better.
-PolarVector = Object.create(Vector);
 // More efficient for radius-angle vectors
-PolarVector.init = function(created, angle, radius) {
+PolarVector.init = function(angle, radius) {
     this.data = new Float64Array(2);
     this.data[0] = angle;
     this.data[1] = radius;

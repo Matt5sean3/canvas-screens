@@ -1,9 +1,3 @@
-
-
-import {BoundingShape} from 'boundingshape';
-
-export const BoundingBox = Object.create(BoundingShape);
-
 BoundingBox.init= function(width, height) {
     this.width = width;
     this.height = height;
@@ -20,3 +14,4 @@ BoundingBox.draw = function(ctx) {
     ctx.strokeRect(0, 0, this.width, this.height);
     ctx.restore();
 }
+
