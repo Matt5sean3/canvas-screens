@@ -1,4 +1,5 @@
 # Canvas Screens
+[![Build Status](https://travis-ci.org/Matt5sean3/canvas-screens.svg?branch=master)](https://travis-ci.org/Matt5sean3/canvas-screens)
 Provides a system for managing movement between screens in a relatively simple manner.
 
 ## What is a screen?
