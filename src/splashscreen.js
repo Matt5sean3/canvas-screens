@@ -30,8 +30,7 @@ SplashScreen.draw = function(currentTime) {
 
 SplashScreen.pause = function() {
     Screen.pause.call(this);
-    // pause accompanying media
-    for(var i = 0; i < this.media.length; i++)
+    for(let i = 0; i < this.media.length; i++)
         this.media[i].pause();
 };
 

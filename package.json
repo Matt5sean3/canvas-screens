@@ -22,9 +22,9 @@
     "broccoli-cli": "^1.0.0",
     "broccoli-concat": "^2.2.0",
     "broccoli-docco": "0.0.12",
-    "broccoli-es6-module-transpiler": "^0.5.0",
-    "broccoli-funnel": "^1.0.0",
-    "broccoli-merge-trees": "^1.0.0",
+    "broccoli-funnel": "^1.0.2",
+    "broccoli-merge-trees": "^1.1.1",
+    "broccoli-rollup": "0.0.4",
     "canvas": "^1.4.0",
     "chai": "^3.5.0",
     "eventtarget": "^0.1.0",
@@ -35,11 +35,21 @@
     "esversion": 6
   },
   "scripts": {
-    "prepublish": "node_modules/broccoli-cli/bin/broccoli build build",
+    "build": "node_modules/broccoli-cli/bin/broccoli build build",
+    "prepublish": "npm run build",
     "clean": "rm -r build",
-    "test": "NODE_PATH=$NODE_PATH:build/commonjs node_modules/mocha/bin/mocha; node_modules/jshint/bin/jshint src test"
+    "lint": "node_modules/jshint/bin/jshint src test",
+    "register": "cd node_modules; ln -s .. canvas-screens; cd ..",
+    "deregister": "rm node_modules/canvas-screens",
+    "build-tests": "cd test; ../node_modules/broccoli-cli/bin/broccoli build build; cd ..",
+    "clean-tests": "rm -r test/build",
+    "mocha-test": "node_modules/mocha/bin/mocha test/build/test",
+    "pretest": "npm run register; npm run build-tests",
+    "test": "npm run lint; npm run mocha-test",
+    "posttest": "npm run deregister; npm run clean-tests"
   },
   "main": "build/commonjs/canvas-screens.js",
+  "jsnext:main": "build/es6/canvas-screens.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Matt5sean3/canvas-screens.git"

@@ -31,7 +31,6 @@ Slider.setValue = function(value) {
 };
 
 Slider.down = function(pos) {
-    //
     var relpos = pos.subtract(this.loc);
     if(relpos.x() > 0 && 
         relpos.x() <= this.width && 

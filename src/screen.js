@@ -20,8 +20,12 @@
  * -> performs cleanup and final actions for the screen
  **/
 
-Screen.init = function(target) {
+Screen.init = function(target, requestFrame, cancelFrame) {
     this.target = target;
+    this.requestFrame = 
+      (requestFrame === undefined)? window.requestAnimationFrame : requestFrame;
+    this.cancelFrame = 
+      (cancelFrame === undefined)? window.cancelAnimationFrame : cancelFrame;
     this.frameRequest = null;
     this.lastTime = 0;
     this.elapsedTime = 0;
@@ -40,7 +44,7 @@ Screen.draw = function(currentTime) {
         this.dt = (currentTime - this.lastTime) / 1000;
     this.elapsedTime += this.dt;
     this.lastTime = currentTime;
-    this.frameRequest = window.requestAnimationFrame(this.draw.bind(this));
+    this.frameRequest = this.requestFrame(this.draw.bind(this));
 };
 
 Screen.open = function() {
@@ -57,7 +61,7 @@ Screen.close = function() {
 Screen.pause = function() {
     // cancelAnimationFrame is experimental
     // TODO: add a workaround for non-compatible browsers
-    window.cancelAnimationFrame(this.frameRequest);
+    this.cancelFrame(this.frameRequest);
     for(var i = 0; i < this.handlers.length; i++)
         this.handlers[i].disable(this.target);
 };
