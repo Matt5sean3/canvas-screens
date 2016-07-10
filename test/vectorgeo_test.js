@@ -1,5 +1,5 @@
 const assert = require("chai").assert;
-const CS = require("../build/commonjs/canvas-screens");
+const CS = require("canvas-screens");
 const Vector = CS.Vector;
 const PolarVector = CS.PolarVector;
 const WrapVector = CS.WrapVector;

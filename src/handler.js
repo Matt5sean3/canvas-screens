@@ -1,15 +1,14 @@
-Handler.create = function(object, name, event) {
-    var created = Object.create(Handler);
-    created.object = object;
-    created.name = name;
-    created.event = event;
-}
+Handler.init = function(object, name, event) {
+    this.object = object;
+    this.name = name;
+    this.event = event;
+};
 
 Handler.enable = function() {
-    this.object.addEventListener(this.name, this.event, false);
-}
+    this.object.addEventListener(this.name, this.event);
+};
 
-Handler.disable = function(canvas) {
+Handler.disable = function() {
     this.object.removeEventListener(this.name, this.event);
-}
+};
 

@@ -13,7 +13,7 @@ Vector.init = function(x, y) {
     this.data = new Float64Array(2);
     this.data[0] = x;
     this.data[1] = y;
-}
+};
 // Methods that must be defined in a subclass
 Vector.x = function() {
     return this.data[0];

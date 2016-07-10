@@ -5,7 +5,7 @@ TextButton.init = function(loc, text, font, style, event) {
     this.font = font;
     this.style = style;
     this.text = text;
-}
+};
 
 TextButton.measure = function(ctx) {
     // measure the text
@@ -15,7 +15,7 @@ TextButton.measure = function(ctx) {
     // Only works with fonts with size specified in pixels
     height = ctx.font.split("px")[0];
     this.bbox = new BoundingBox(width, height);
-}
+};
 
 TextButton.render = function(ctx, currentTime, dt) {
     ctx.font = this.font;
@@ -24,5 +24,5 @@ TextButton.render = function(ctx, currentTime, dt) {
     ctx.fillStyle = this.style;
     this.measure(ctx);
     ctx.fillText(this.text, 0, 0);
-}
+};
 
