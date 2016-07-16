@@ -1,6 +1,6 @@
 import { assert } from "chai";
 import EventTarget from "eventtarget";
-import { Base, Handler, Screen } from "canvas-screens";
+import { Base, Handler, Screen, BoundingShape, BoundingBox, BoundingCircle } from "canvas-screens";
 
 const Eventer = Object.create(Base);
 

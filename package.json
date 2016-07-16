@@ -42,9 +42,9 @@
     "register": "cd node_modules; ln -s .. canvas-screens; cd ..",
     "deregister": "rm node_modules/canvas-screens",
     "build-tests": "cd test; ../node_modules/broccoli-cli/bin/broccoli build build; cd ..",
-    "clean-tests": "rm -r test/build",
+    "clean-tests": "rm -rf test/build",
     "mocha-test": "node_modules/mocha/bin/mocha test/build/test",
-    "pretest": "npm run register; npm run build-tests",
+    "pretest": "npm run register; npm run clean-tests; npm run build-tests",
     "test": "npm run lint; npm run lint-tests; npm run mocha-test",
     "posttest": "npm run deregister; npm run clean-tests"
   },
