@@ -1,4 +1,8 @@
 
+import { BoundingCircle } from '../src/boundingcircle.js';
+import { Vector } from '../src/vectorgeo.js';
+import { assert } from 'chai';
+
 describe("BoundingCircle", function() {
   var bounding_circle;
   beforeEach("Create a new BoundingCircle", function() {

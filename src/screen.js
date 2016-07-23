@@ -19,6 +19,7 @@
  * -> pauses the screen internally
  * -> performs cleanup and final actions for the screen
  **/
+export const Screen = Object.create(Base);
 
 Screen.init = function(target, requestFrame, cancelFrame) {
     this.target = target;

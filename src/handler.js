@@ -1,3 +1,8 @@
+
+import { Base } from './base.js';
+
+export const Handler = Object.create(Base);
+
 Handler.init = function(object, name, event) {
     this.object = object;
     this.name = name;

@@ -1,3 +1,7 @@
+import { Base } from './base.js';
+
+export const CollisionEvent = Object.create(Base);
+
 CollisionEvent.init = function(item1, item2, event) {
     this.item1 = item1;
     this.item2 = item2;

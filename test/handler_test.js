@@ -1,4 +1,9 @@
 
+import { it, describe } from 'mocha';
+import { assert } from 'chai';
+import { Handler } from '../src/handler.js';
+import { Eventer } from './resources/frame.js';
+
 describe("Handler", function() {
     var foo;
     var eventer;

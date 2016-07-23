@@ -1,4 +1,8 @@
 // Create a test object
+import { Base } from '../src/base.js';
+import { assert } from 'chai';
+import { it, describe } from 'mocha';
+
 const TestObj = Object.create(Base);
 
 TestObj.init = function(a) {

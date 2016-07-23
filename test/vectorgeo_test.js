@@ -1,9 +1,6 @@
-const assert = require("chai").assert;
-const CS = require("canvas-screens");
-const Vector = CS.Vector;
-const PolarVector = CS.PolarVector;
-const WrapVector = CS.WrapVector;
-const WrapPolarVector = CS.WrapPolarVector;
+
+import { assert } from 'chai';
+import { Vector, PolarVector, WrapVector, WrapPolarVector } from '../src/vectorgeo.js';
 
 // v - actual
 // i - expected

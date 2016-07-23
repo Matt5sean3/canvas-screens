@@ -1,3 +1,6 @@
+
+export const Slider = Object.create(Base);
+
 Slider.init = function(loc, width, height, slider_width) {
     this.loc = loc;
     this.width = width;

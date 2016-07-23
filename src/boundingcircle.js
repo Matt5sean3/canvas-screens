@@ -1,3 +1,7 @@
+
+import { BoundingShape } from './boundingshape.js';
+export const BoundingCircle = Object.create(BoundingShape);
+
 BoundingCircle.init = function(r) {
     this.radius = r;
 };

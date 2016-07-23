@@ -1,4 +1,9 @@
 
+import { BoundingBox } from '../src/boundingbox.js';
+import { Vector } from '../src/vectorgeo.js';
+import { assert } from 'chai';
+import { it, describe } from 'mocha';
+
 describe("BoundingBox", function() {
     var foo;
     beforeEach("Creates a new bounding box", function(){

@@ -1,3 +1,6 @@
+
+export const MenuScreen = Object.create(Screen);
+
 MenuScreen.init = function(ctx) {
     Screen.init.call(this, ctx);
     this.options = [];

@@ -1,3 +1,8 @@
+
+import { Base } from './base.js';
+import { CollisionEvent } from './collisionevent.js';
+export const CollisionGroup = Object.create(Base);
+
 CollisionGroup.init = function() {
     this.collisionEvents = [];
 };

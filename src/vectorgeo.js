@@ -1,3 +1,11 @@
+
+import { Base } from './base.js';
+
+export const Vector = Object.create(Base);
+export const PolarVector = Object.create(Vector);
+export const WrapVector = Object.create(Vector);
+export const WrapPolarVector = Object.create(PolarVector);
+
 // Does vector mathematics
 
 // These are meant to be essentially immutable objects

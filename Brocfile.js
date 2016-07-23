@@ -1,17 +1,17 @@
-var Concat = require('broccoli-concat');
 var Funnel = require('broccoli-funnel');
 var MergeTrees = require('broccoli-merge-trees');
-var Bundle = require('broccoli-rollup');
-// var Docco = require("broccoli-docco");
+var Rollup = require('broccoli-rollup');
 
 // First reach an ES6 compatible form by concatenating to a module
+var src = "src";
 
-var es6 = Concat("src", {
+var es6 = Rollup(src, {
   "inputFiles": ["*.js"],
-  "outputFile": "canvas-screens.js",
-  "headerFiles": ["declarations.js"],
-  "sourceMapConfig": {"enabled": false},
-  "allowNone": false
+  "rollup": {
+    "entry": "entry.js",
+    "format": "es6",
+    "dest" : "CanvasScreens.js"
+  }
 });
 
 var es6funnel = Funnel(es6, {
@@ -19,13 +19,13 @@ var es6funnel = Funnel(es6, {
 });
 
 // Transpile to a web form
-var web = Bundle(es6, {
-  "inputFiles": ["canvas-screens.js"],
+var web = Rollup(src, {
+  "inputFiles": ["*.js"],
   "rollup": {
     "moduleName": "CanvasScreens",
-    "entry": "canvas-screens.js",
+    "entry": "entry.js",
     "format": "iife",
-    "dest": "canvas-screens.js"
+    "dest": "CanvasScreens.js"
   }
 });
 
@@ -33,20 +33,19 @@ var webfunnel = Funnel(web, {
   "destDir": "web"
 });
 
-var commonjs = Bundle(es6, {
-  "inputFiles": ["canvas-screens.js"],
+// commonjs seems to fail
+var commonjs = Rollup(src, {
+  "inputFiles": ["*.js"],
   "rollup": {
-    "entry": "canvas-screens.js",
+    "entry": "entry.js",
     "format": "cjs",
-    "dest": "canvas-screens.js"
+    "dest": "CanvasScreens.js"
   }
 });
 
 var commonjsfunnel = Funnel(commonjs, {
   "destDir": "commonjs"
 });
-
-// var docs = Docco(es6);
 
 module.exports = MergeTrees([es6funnel, commonjsfunnel, webfunnel]); 
 

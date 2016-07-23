@@ -1,3 +1,6 @@
+import { BoundingShape } from './boundingshape.js';
+export const BoundingBox = Object.create(BoundingShape);
+
 BoundingBox.init= function(width, height) {
     this.width = width;
     this.height = height;
