@@ -5,7 +5,9 @@ var Bundle = require('broccoli-rollup');
 // var Docco = require("broccoli-docco");
 
 // First reach an ES6 compatible form by concatenating to a module
+
 var es6 = Concat("src", {
+  "inputFiles": ["*.js"],
   "outputFile": "canvas-screens.js",
   "headerFiles": ["declarations.js"],
   "sourceMapConfig": {"enabled": false},
