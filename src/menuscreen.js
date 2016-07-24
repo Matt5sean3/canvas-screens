@@ -1,4 +1,5 @@
 
+import { Screen } from './screen.js';
 export const MenuScreen = Object.create(Screen);
 
 MenuScreen.init = function(ctx) {

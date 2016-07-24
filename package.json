@@ -35,11 +35,11 @@
   },
   "scripts": {
     "clean": "rm -rf build",
-    "build": "node_modules/broccoli-cli/bin/broccoli build build",
+    "build": "node_modules/.bin/broccoli build build",
     "prepublish": "npm run clean; npm run build",
-    "lint": "node_modules/jshint/bin/jshint src",
-    "lint-tests": "node_modules/jshint/bin/jshint test",
-    "mocha-test": "node_modules/mocha/bin/mocha --compilers js:babel-core/register",
+    "lint": "node_modules/.bin/jshint src",
+    "lint-tests": "node_modules/.bin/jshint test",
+    "mocha-test": "node_modules/.bin/mocha --compilers js:babel-core/register",
     "test": "npm run lint; npm run lint-tests; npm run mocha-test"
   },
   "main": "build/commonjs/CanvasScreens.js",

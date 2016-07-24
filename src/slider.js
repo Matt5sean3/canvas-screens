@@ -1,4 +1,6 @@
 
+import { Base } from './base.js';
+
 export const Slider = Object.create(Base);
 
 Slider.init = function(loc, width, height, slider_width) {

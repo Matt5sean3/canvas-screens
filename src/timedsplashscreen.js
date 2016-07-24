@@ -1,4 +1,5 @@
 
+import { SplashScreen } from './splashscreen.js';
 export const TimedSplashScreen = Object.create(SplashScreen);
 
 TimedSplashScreen.init = function(ctx, duration, nextScreen, media) {

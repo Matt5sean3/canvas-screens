@@ -1,4 +1,5 @@
 
+import { Screen } from './screen.js';
 export const SplashScreen = Object.create(Screen);
 
 // Clicking through is a fundamental splash screen option

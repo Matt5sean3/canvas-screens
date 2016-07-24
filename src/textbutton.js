@@ -1,4 +1,6 @@
 
+import { Button } from './button.js';
+
 export const TextButton = Object.create(Button);
 
 TextButton.init = function(loc, text, font, style, event) {

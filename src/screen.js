@@ -1,3 +1,6 @@
+
+import { Base } from './base.js';
+
 /**
  * The life cycle of a screen
  * 

@@ -1,4 +1,5 @@
 
+import { Screen } from './screen.js';
 export const LoadScreen = Object.create(Screen);
 
 LoadScreen.init = function(ctx, images, media, nextScreen) {
