@@ -10,7 +10,7 @@ var es6 = Rollup(src, {
   "rollup": {
     "entry": "entry.js",
     "format": "es6",
-    "dest" : "CanvasScreens.js"
+    "dest" : "canvas-screens.js"
   }
 });
 
@@ -25,7 +25,7 @@ var web = Rollup(src, {
     "moduleName": "CanvasScreens",
     "entry": "entry.js",
     "format": "iife",
-    "dest": "CanvasScreens.js"
+    "dest": "canvas-screens.js"
   }
 });
 
@@ -39,7 +39,7 @@ var commonjs = Rollup(src, {
   "rollup": {
     "entry": "entry.js",
     "format": "cjs",
-    "dest": "CanvasScreens.js"
+    "dest": "canvas-screens.js"
   }
 });
 
