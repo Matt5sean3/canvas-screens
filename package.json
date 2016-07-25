@@ -15,7 +15,7 @@
     "name": "Matthew Balch",
     "email": "matbalch@vt.edu"
   },
-  "files": [],
+  "files": ["src"],
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.11.4",
@@ -43,7 +43,7 @@
     "test": "npm run lint; npm run lint-tests; npm run mocha-test"
   },
   "main": "build/commonjs/canvas-screens.js",
-  "jsnext:main": "build/es6/canvas-screens.js",
+  "jsnext:main": "src/entry.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Matt5sean3/canvas-screens.git"
