@@ -27,9 +27,9 @@ export const Screen = Object.create(Base);
 Screen.init = function(target, requestFrame, cancelFrame) {
     this.target = target;
     this.requestFrame = 
-      (requestFrame === undefined)? window.requestAnimationFrame : requestFrame;
+      (requestFrame === undefined)? window.requestAnimationFrame.bind(window) : requestFrame;
     this.cancelFrame = 
-      (cancelFrame === undefined)? window.cancelAnimationFrame : cancelFrame;
+      (cancelFrame === undefined)? window.cancelAnimationFrame.bind(window) : cancelFrame;
     this.frameRequest = null;
     this.lastTime = 0;
     this.elapsedTime = 0;
