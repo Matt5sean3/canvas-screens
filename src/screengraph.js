@@ -48,6 +48,6 @@ ScreenGraph.rebaseStack = function() {
 
 ScreenGraph.open = function() {
   this.stack = [0];
-  this.currentScreen().open();
+  this.currentScreen().open(this);
 };
 
