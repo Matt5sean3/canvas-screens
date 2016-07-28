@@ -16,6 +16,7 @@ import { MenuScreen } from './menuscreen.js';
 import { SplashScreen } from './splashscreen.js';
 import { TimedSplashScreen } from './timedsplashscreen.js';
 import { Slider } from './slider.js';
+import { ScreenGraph } from './screengraph.js';
 
 export {
   Base,
@@ -24,5 +25,5 @@ export {
   Button, TextButton, 
   CollisionEvent, CollisionGroup,
   Entity, Handler, Screen, LoadScreen, MenuScreen, SplashScreen, TimedSplashScreen,
-  Slider};
+  Slider, ScreenGraph};
 
