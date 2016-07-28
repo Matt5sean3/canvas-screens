@@ -56,6 +56,7 @@ Screen.open = function() {
     this.unpause();
 };
 
+// Should be possible to close without unpausing first
 Screen.close = function() {
     this.pause();
     // unpausing after closing should be undefined but will work
@@ -63,11 +64,14 @@ Screen.close = function() {
 };
 
 Screen.pause = function() {
-    // cancelAnimationFrame is experimental
+    // cancelAnimationFrame is experimental but widely supported
     // TODO: add a workaround for non-compatible browsers
-    this.cancelFrame(this.frameRequest);
-    for(var i = 0; i < this.handlers.length; i++)
-        this.handlers[i].disable(this.target);
+    if(this.frameRequest) {
+        this.cancelFrame(this.frameRequest);
+        this.frameRequest = null;
+        for(var i = 0; i < this.handlers.length; i++)
+            this.handlers[i].disable(this.target);
+    }
 };
 
 Screen.unpause = function() {
