@@ -11,7 +11,7 @@ ScreenGraph.init = function(screens, edges) {
   this.stack = [];
 };
 
-ScreenGraph.prototype.atBase = function() {
+ScreenGraph.atBase = function() {
   return this.stack.length <= 1;
 };
 
