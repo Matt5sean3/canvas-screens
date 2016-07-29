@@ -39,7 +39,7 @@ Screen.init = function(target, requestFrame, cancelFrame) {
 };
 
 Screen.addHandler = function(object, event_name, handler) {
-    this.handlers.push(new Handler(object, event_name, handler));
+    this.handlers.push(Handler.create(object, event_name, handler));
 };
 
 Screen.draw = function(currentTime) {
