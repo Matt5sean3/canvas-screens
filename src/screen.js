@@ -1,5 +1,6 @@
 
 import { Base } from './base.js';
+import { Handler } from './handler.js';
 
 /**
  * The life cycle of a screen
